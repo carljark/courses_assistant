@@ -1,0 +1,111 @@
+﻿1. Crea un libro de trabajo, importa en una hoja de cálculo, Contrataciones, los datos
+del fichero contrataciones-exam944.txt y analiza esos datos para contestar:
+a) Calcula el importe facturado promedio en contrataciones de estancias de cada
+comercial, ordena esos promedios e indica a continuación, con formato de dos
+decimales, cuáles son los tres mayores obtenidos.
+
+2. La segunda pregunta que no requiere formulación es la que sigue:
+b) Sabiendo que Fabio, Gustavo y Sergio nacieron en los 70 y que los restantes co-
+merciales son de otras décadas y considerando como 100 % el importe total factu-
+rado por contrataciones de 8 o más unidades, debes indicar cómo se repartió ese
+total entre esos dos grupos de comerciales. Concretamente, indica para cada gru-
+po tanto la correspondiente facturación total como el porcentaje (con formato de
+dos decimales) que esa facturación representó sobre el 100 % antes mencionado.
+
+3. Y he aquí la tercera pregunta:
+c) Teniendo en cuenta únicamente las contrataciones llevadas a cabo durante 2017
+en Bilbao (BIL), indica tanto el número de contrataciones como el de unidades
+contratadas desde el comienzo de ese año hasta el final de cada uno de los dos
+trimestres indicados.
+
+4. Completa la hoja Contrataciones con una columna Tipo Dto. que asigne un tipo de
+descuento a cada contratación teniendo en cuenta lo siguiente:
+Si la contratación es de menos de once unidades, no se aplica descuento (es decir,
+el tipo de descuento será del 0 %).
+Solamente si la contratación es de once o más unidades, se aplica un descuento
+para el que hay que distinguir tres casos:
+• Se aplica un 12 % de descuento en la sucursal de Alicante (ALI) los veinte
+primeros días de cada mes.
+• Se aplica un 10 % de descuento en la sucursal de Bilbao (BIL), sin que im-
+porte el día.
+• Se aplica un 5 % si no se da ninguno de los casos anteriores.
+
+Tras haber incorporado Tipo Dto. a tu tabla de contrataciones, ya puedes contestar a la
+cuarta pregunta:
+d) Teniendo en cuenta únicamente las contrataciones llevadas a cabo en el segundo
+trimestre de cada año, indica tanto el número de contrataciones como el de uni-
+dades contratadas para cada uno de los posibles tipos de descuento aplicados por
+la agencia.
+
+5. Completa la hoja Contrataciones con una columna Incentivo donde se calcule, pa-
+ra cada contratación, el importe del correspondiente incentivo con el que se premia al
+comercial responsable de la venta. La política de incentivos aplicada calcula el impor-
+te correspondiente a cada contratación en función del número de unidades vendidas
+(Unidades) y de las nueve puntuaciones otorgadas por el cliente (de la PtosA a la
+PtosI). En concreto, se trata de sumar los tres conceptos siguientes:
+Tantos euros como unidades vendidas en la contratación.
+Por cada puntuación entre 4 y 8, ambos límites incluidos, 3 euros.
+Por cada puntuación estrictamente mayor que 8 puntos, 4 euros.
+Por ejemplo, si 2, 3, 4, 6, 7, 7, 8, 9 y 9 fueran las nueve puntuaciones otorgadas por el
+cliente a una contratación de 10 unidades, debería calcularse un incentivo de 33 euros:
+Las unidades supondrían 10 euros.
+Las valoraciones entre los 4 y los 8 puntos serían 4, 6, 7, 7 y 8, es decir, cinco
+valoraciones que, a 3 euros cada una, supondrían 15 euros por este concepto.
+Las valoraciones que superarían los 8 puntos serían 9 y 9, es decir, dos valoracio-
+nes que, a 4 euros cada una, supondrían 8 euros por este concepto.
+Después de incorporar Incentivo a tu tabla de contrataciones, responde:
+e) Indica los incentivos totales repartidos cada año en la sucursal de Bilbao (BIL)
+y, además, indica en cada caso qué porcentaje (con formato de cuatro decimales)
+suponen esos incentivos considerando como 100 % el total de la agencia ese año.
+
+
+6. Añade en la hoja Contrataciones una columna PSGlobal donde se calculen puntos
+de satisfacción global a partir de las puntuaciones individuales de los clientes recogi-
+das en las columnas de la PtosA a la PtosI. Esta satisfacción global ha de calcularse
+multiplicando una satisfacción base por un factor de ajuste:
+
+La satisfación base debe ser la suma de la mejor y la peor de las puntuaciones
+individuales asignadas a la contratación.
+El factor de ajuste dependerá de la suma de las puntuaciones individuales que
+alcancen el valor 7:
+• Si esa suma es mayor o igual que 26, el factor debe ser 5.
+• En caso contrario, el factor debe ser 3.
+Por ejemplo, si 2, 3, 4, 6, 7, 7, 8, 9 y 9 fueran las nueve puntuaciones otorgadas por el
+cliente a una contratación, debería calcularse 55 como satisfacción global:
+La satisfacción base sería 9 + 2 = 11.
+Las valoraciones que alcanzarían los 7 puntos serían 7, 7, 8, 9 y 9 y sumarían 40,
+por lo que el factor de ajuste debería ser 5.
+El correspondiente producto sería 11 × 5 = 55.
+Una vez tengas correctamente calculada la columna PSGlobal, responde:
+f ) ¿Cuál ha sido el importe total facturado en contrataciones cuyo campo PSGlobal
+ha alcanzado los 30 puntos sin llegar a los 45?
+
+¿Y cuál cuando PSGlobal ha alcanzado los 60 puntos sin llegar a los 75?
+
+7. Importa la información del fichero regalos-exam944.txt en una nueva hoja que se
+llame Regalos y utilízala para completar la hoja Contrataciones con una columna
+Hay Regalo que indique en cada contratación (con un texto, Sí o No) si esa contrata-
+ción comporta regalo. Debes tener en cuenta lo siguiente:
+El resultado hay que tomarlo de la columna Regalo de Regalos mediante una
+búsqueda en la columna Situación basada en la sucursal, en el número de unida-
+des de la correspondiente contratación y en las contrataciones acumuladas por el
+cliente desde el comienzo de 2015 hasta esa contratación (incluida).
+El valor buscado necesario para llevar a cabo esa búsqueda hay que formarlo
+mediante la concatenación de los cinco elementos siguientes:
+• El correspondiente código de la columna Sucursal.
+• Un carácter barra vertical.
+• El correspondiente número de Unidades, salvo que sean 18 o más, en cuyo
+caso hay que concatenar el carácter X en vez de las unidades.
+• Otro carácter barra vertical.
+• El correspondiente número de contrataciones acumuladas, salvo que sean 18
+o más, en cuyo caso hay que concatenar el carácter X en su lugar.
+Puede resultar útil añadir primero una columna auxiliar CACliente (por contra-
+taciones acumuladas por el cliente) donde en cada fila se acumule el número de
+contrataciones llevadas a cabo por el correspondiente cliente hasta ese momento,
+incluyendo la de esa fila.
+
+Y, tras añadir la nueva columna, aborda ya la última pregunta de esta prueba:
+g) Averigua, para cada sucursal de la agencia, en qué mes de 2017 se entregaron allí
+más regalos y luego indica, simplemente, cuántos regalos fueron.
+
+

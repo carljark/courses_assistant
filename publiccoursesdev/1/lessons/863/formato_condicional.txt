@@ -1,0 +1,8 @@
+Vamos a intentar que el precio del más barato tenga un color de fondo en verde.
+Para ello tendremos que situar en una celda el MIN.
+Luego, en en cuadro de diálogo de formato condicional,
+tendremos que igualar la celda del valor con la celda del SI
+de tal forma que nos valga para todas las celdas que queremos
+que tengan el formato.
+Hay que tener en cuenta las referencias absolutas y relativas en
+la regla de validacion del formato condicional.

@@ -49,16 +49,16 @@ class PostRouter {
     this.router.use('/api', comprobartoken);
     this.router.use('/api/users', usersRoute);
     this.router.use('/courses', this.lessons);
-    this.router.use('/courses', estaticExpress(path.join(__dirname, '../', config.dirPublicName)));
+    this.router.use('/courses', estaticExpress(path.join(__dirname, '../../', config.dirPublicName)));
     this.router.use('/api/initportada', routerinitport);
     this.router.use('/api/portada', rutaportada);
     this.router.use('/api/actualizar', rutaactualizar);
     this.router.use('/api/insertar', insertar);
     this.router.use('/api/countries', this.countries);
     this.router.use('/files', rutaInsertFiles);
-    this.router.use('/', estaticExpress(path.join(__dirname, '../cliente')));
+    this.router.use('/', estaticExpress(path.join(__dirname, '../../clientng/dist/curseitorng')));
     this.router.all('/*', (req: Request, res: Response, next: NextFunction) => {
-      res.sendFile('index.html', { root: (path.join(__dirname, '../cliente')) });
+      res.sendFile('index.html', { root: (path.join(__dirname, '../../clientng/dist/curseitorng')) });
     });
   }
 }

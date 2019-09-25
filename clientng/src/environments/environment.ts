@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  urlServer: 'https://carlosalbertogodoy.ddns.net'
+  urlServer: 'http://192.168.1.3:8442'
 };

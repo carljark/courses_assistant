@@ -2,14 +2,14 @@ import cors from 'cors';
 import {  json, NextFunction, Request, Response, Router, static as estaticExpress, urlencoded } from 'express';
 import path from 'path';
 
-import rutaactualizar from './actualizar';
-import routerinitport from './initsnapshots';
-import insertar from './insertar';
-import rutaInsertFiles from './insertFiles';
-import rutaportada from './lessons';
-import rutalogin from './login';
+import updateRoute from './actualizar';
+import initPortRoute from './initsnapshots';
+import insertRoute from './insert';
+import insertFilesRoute from './insertfiles';
+import lessonsRoute from './lessons';
+import loginRoute from './login';
 
-import comprobartoken from './comprobartoken';
+import comprobartoken from './checktoken';
 import usersRoute from './users';
 
 import checkip from './checkip';
@@ -44,18 +44,18 @@ class PostRouter {
 
   public routes() {
     this.router.use(checkip);
-    this.router.use('/autenticar', rutalogin);
+    this.router.use('/autenticar', loginRoute);
     this.router.use('/graphql', comprobartoken);
     this.router.use('/api', comprobartoken);
     this.router.use('/api/users', usersRoute);
     this.router.use('/courses', this.lessons);
     this.router.use('/courses', estaticExpress(path.join(__dirname, '../../', config.dirPublicName)));
-    this.router.use('/api/initportada', routerinitport);
-    this.router.use('/api/portada', rutaportada);
-    this.router.use('/api/actualizar', rutaactualizar);
-    this.router.use('/api/insertar', insertar);
+    this.router.use('/api/initportada', initPortRoute);
+    this.router.use('/api/portada', lessonsRoute);
+    this.router.use('/api/actualizar', updateRoute);
+    this.router.use('/api/insertar', insertRoute);
     this.router.use('/api/countries', this.countries);
-    this.router.use('/files', rutaInsertFiles);
+    this.router.use('/files', insertFilesRoute);
     this.router.use('/', estaticExpress(path.join(__dirname, '../../clientng/dist/curseitorng')));
     this.router.all('/*', (req: Request, res: Response, next: NextFunction) => {
       res.sendFile('index.html', { root: (path.join(__dirname, '../../clientng/dist/curseitorng')) });

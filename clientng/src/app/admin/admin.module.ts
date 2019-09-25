@@ -20,7 +20,11 @@ import {LessonDashboardComponent} from './edit-lessons/lesson-dashboard/lesson-d
 import {ExercisesComponent} from './edit-lessons/lesson-table/exercises/exercises.component';
 
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { UserlistComponent } from './form-usuario/userlist/userlist.component';
 
 @NgModule({

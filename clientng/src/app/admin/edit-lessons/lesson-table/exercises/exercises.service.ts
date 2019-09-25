@@ -89,7 +89,7 @@ export class ExercisesService {
     );
   }
 
-  delExer(idNumber: number): Observable<number> {
+  delExer(idNumber: number) {
     // parece que en mutation se debe declarar las variables
     // tipo $id, por ejemplo, cuando las vamos a asignar
     const gqlDelExer = gql`

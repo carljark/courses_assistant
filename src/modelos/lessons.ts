@@ -4,8 +4,6 @@ import path from 'path';
 
 import { join } from 'path';
 
-import { rmdir } from 'fs';
-
 import db from './db';
 
 import { camelize } from '../camelize';
@@ -14,7 +12,7 @@ import * as dbDef from '../models/db';
 
 import { Observable } from 'rxjs';
 
-import config, {mode} from '../environment';
+import config from '../environment';
 
 import rmDirAsync from './rmdir';
 
@@ -27,7 +25,7 @@ class InterfazSnapshopts {
 
   public LessonsModel: dbDef.snapshotsModel;
 
-  private pathLessonBase = join(__dirname, '../', config.dirPublicName);
+  private pathLessonBase = join(__dirname, '../../', config.dirPublicName);
 
   constructor() {
     this.LessonsModel = db.import('../models/lessons');
@@ -63,7 +61,6 @@ class InterfazSnapshopts {
     });
   }
   public conseguirTodas(idcurso: number): Observable<Lesson[]> {
-    console.log('hola')
     return new Observable<Lesson[]>((ob) => {
       this.LessonsModel.findAll({ where: { idcurso }})
       .then((todas) => {
@@ -74,10 +71,10 @@ class InterfazSnapshopts {
 
   public build(): any {
     this.LessonsModel.build();
- }
+  }
 
   public buildall(snapshot: Lesson): any {
-     this.LessonsModel.build(snapshot);
+    this.LessonsModel.build(snapshot);
   }
 
   public borrarTodos(userid: number): any {
@@ -111,7 +108,7 @@ class InterfazSnapshopts {
             ob.next(snapshotssalvados);
           }
           }).error(() => {
-            console.log('se jodió el guardado de la matriz de snapshots');
+            console.log('save of lessons array failed');
           });
       });
     });
@@ -133,21 +130,27 @@ class InterfazSnapshopts {
   public borrarporId(id: number) {
       this.LessonsModel.findOne({where: {id}})
       .then((lessonFinded) => {
-        const archivo = path.join(__dirname, '../', config.dirPublicName)
-        + lessonFinded.idcurso.toString()
+        const archivo = path.join(__dirname, '../../', config.dirPublicName)
+        + '/' + lessonFinded.idcurso.toString()
         + '/' + config.lessonsDirName + '/'
         + lessonFinded.getDataValue('archivo');
-        console.log('snapshot encontrada: ', lessonFinded);
+        console.log('snapshot encontrada: ', lessonFinded.archivo);
         // es mejor que implemente el borrado de archivos en su ruta correspondiente
         // porque aquí solo estamos borrando un archivo
         fs.access(archivo, (file) => {
           fs.unlink(archivo, (borrado) => console.log(borrado));
         });
         const lessonDir = `${this.pathLessonBase}/${lessonFinded.idcurso}/${config.lessonsDirName}/${id}`;
-        rmDirAsync(`${lessonDir}`, (err) => {
-            if (err) {
-                console.log('error: ', err);
-            }
+        fs.access(lessonDir, (errAccess) => {
+          if (errAccess) {
+            console.log('errAccessdir: ', errAccess);
+          } else {
+            rmDirAsync(`${lessonDir}`, (err) => {
+                if (err) {
+                    // console.log('error rmDirAsync: ', err);
+                }
+            });
+          }
         });
         this.LessonsModel.destroy({where: {id} }).
           then(() => {

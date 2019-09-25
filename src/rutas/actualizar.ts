@@ -10,24 +10,25 @@ class Ruta {
     private pathLessonBase = join(__dirname, '../', config.dirPublicName);
 
     constructor() {
-      this.router = Router();
-      this.routes();
+        this.router = Router();
+        this.routes();
     }
 
     public rutaprincipal(req: Request, res: Response): void {
         let idcurso = 0;
+        const idLesson = parseInt(req.params.id, 10);
         idcurso = parseInt(res.locals.decoded.sub, 10);
         modeloportada.buildall(
             {
                 archivo: req.body.imagen.archivo,
                 editsino: req.body.imagen.editsino,
-                id: req.params.id,
+                id: parseInt(req.params.id, 10),
                 idcurso: req.body.imagen.idcurso,
                 nombremostrado: req.body.imagen.nombremostrado,
                 serie: req.body.imagen.serie,
             }
         );
-        modeloportada.updateById(req.params.id, req.body.imagen.nombremostrado)
+        modeloportada.updateById(idLesson, req.body.imagen.nombremostrado)
         .subscribe((ok) => {
             if (ok) {
                 console.log('actualización hecha correctamente en la bd');
@@ -48,9 +49,10 @@ class Ruta {
 
     public rutaborrarid(req: Request, res: Response): void {
         console.log('borrar por id');
+        const idLesson = parseInt(req.params.id, 10);
 
         // cuidado porque en borrarporId ya borro la imagen de la leccion
-        modeloportada.borrarporId(req.params.id);
+        modeloportada.borrarporId(idLesson);
         // this.deleteFiles(req.params.id, req.body.imagen.idcurso);
         res.end();
 

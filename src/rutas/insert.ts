@@ -1,28 +1,27 @@
-import {Router, Request, Response, NextFunction} from 'express';
-import modeloportadas from '../modelos/lessons';
+import { NextFunction, Request, Response, Router} from 'express';
 import modeloejercicios from '../modelos/ejercicios';
+import modeloportadas from '../modelos/lessons';
 class RouterMeter {
-    router: Router;
-    publicKey: Buffer;
+    public router: Router;
     constructor(){
       this.router = Router();
       this.routes();
     }
-    rutaprincipal(req: Request, res: Response, next: NextFunction): void {
+    private rutaprincipal(req: Request, res: Response, next: NextFunction): void {
       modeloportadas.insertarUno(req.body.archivo, req.body.idcurso)
-      .subscribe((id => {
+      .subscribe(((id) => {
         res.json(id);
         next();
-      }))
+      }));
     }
-    insEjercicio(req: Request, res: Response, next: NextFunction): void {
+    private insEjercicio(req: Request, res: Response, next: NextFunction): void {
       console.log('llegamos a la ruta ejercicio');
       modeloejercicios.insertarUno(req.body.idsnapshot, req.body.archivo)
-      .subscribe(id => {
+      .subscribe((id) => {
         console.log('ejercicio insertado en la base de datos: ', id);
         res.json(id);
         // next();
-      })
+      });
 
     }
     private routes() {

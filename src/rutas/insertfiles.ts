@@ -20,7 +20,7 @@ class Ruta {
           console.log('se llega a tipoarchivo ejercicio');
           form.uploadDir = path.join(
             __dirname,
-            '../',
+            '../../',
             config.dirPublicName,
             fields.idcurso as string,
             '/lessons',
@@ -34,14 +34,14 @@ class Ruta {
         } else if (fields.tipoarchivo === 'texto') {
           console.log('textooooooooooo');
           form.uploadDir = path.join(__dirname,
-            '../',
+            '../../',
             config.dirPublicName,
             fields.idcurso as string,
             '/lessons',
             fields.idlesson as string);
           console.log('form.uploadDir: ', form.uploadDir);
         } else {
-          form.uploadDir = path.join(__dirname, '../', config.dirPublicName, fields.idcurso as string, '/lessons');
+          form.uploadDir = path.join(__dirname, '../../', config.dirPublicName, fields.idcurso as string, '/lessons');
         }
 
         console.log('se procede a crear la carpeta para el archivo');

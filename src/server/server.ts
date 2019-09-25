@@ -4,7 +4,7 @@ import https from 'https';
 import {apollo} from './apollo-server';
 import {credentials} from './credentials';
 
-import comprobartoken from '../rutas/comprobartoken';
+import comprobartoken from '../rutas/checktoken';
 import indexRouter from '../rutas/index';
 
 export default class Server {

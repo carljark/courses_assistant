@@ -1,0 +1,16 @@
+{
+  "dev": {
+    "host": "",
+    "driver": "postgres",
+    "user": "mastergodoy",
+    "database": "cursosdev",
+    "password": "1aB|pori"
+  },
+  "production": {
+    "host": "",
+    "driver": "postgres",
+    "user": "mastergodoy",
+    "database": "cursos",
+    "password": "1aB|pori"
+  }
+}

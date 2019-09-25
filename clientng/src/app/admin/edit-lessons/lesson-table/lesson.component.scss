@@ -1,0 +1,35 @@
+.ver {
+    display: none;
+}
+
+.cabecera {
+    display: flex;
+    background-color: #225079;
+    color: white;
+    height: 50px;
+    justify-content: space-around;
+    align-items: center;
+}
+.fila {
+    display: flex;
+    background-color: white;
+    color: black;
+    height: 80px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.colizq > input,label {
+    display: flex;
+    background-color: white;
+    color: black;
+    height: 30px;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.colizq > input {
+    background-color: rgb(203, 238, 240);
+    color: rgb(46, 52, 61);
+    align-items: flex-start;
+}

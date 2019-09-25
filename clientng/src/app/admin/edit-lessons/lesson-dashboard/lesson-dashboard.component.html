@@ -1,0 +1,38 @@
+<img
+  class="col-sm-12"
+  [attr.src]="origenImagenes + lesson.archivo | secure | async"
+/>
+<form (ngSubmit)="onSubmit(lesson)" #lessonForm="ngForm">
+  <div class="checkbox text-center">
+    <label>
+      <input
+        type="checkbox"
+        name="habilitarFormulario"
+        value="true"
+        [(ngModel)]="lesson.meter"
+      />Actualizar
+    </label>
+  </div>
+  <div *ngIf="lesson.meter">
+    <div class="form-group">
+      <label for="nomb">Título:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nomb"
+        name="nombre"
+        [(ngModel)]="lesson.nombremostrado"
+      />
+      <app-upload-exercises [lesson]="lesson"
+      ></app-upload-exercises>
+    </div>
+    <button type="submit" class="btn btn-success">Meter</button>
+    <button
+      type="button"
+      class="btn btn-success"
+      (click)="borrarImagen(lesson)"
+    >
+      Borrar
+    </button>
+  </div>
+</form>

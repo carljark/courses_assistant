@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["es6", "esnext.asynciterable", "dom"],
+    "module": "commonjs",
+    "removeComments": true,
+    "outDir": "dist",
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "rootDir": "src",
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true
+  },
+  "include": [
+    "src/*",
+    "./src/typings.d.ts",
+    "src/server/*",
+    "src/rutas/*",
+    "src/modelos/*",
+    "src/models/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

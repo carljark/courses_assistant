@@ -1,0 +1,12 @@
+<app-lesson-text [texto]="lesson?.fulltext"></app-lesson-text>
+<div class="row no-gutters">
+  <!--a [href]='rutaejercicio' (click)="descargarEjercicio()" class="button" target="_blank">Descargar</a-->
+  <div class="mx-auto">
+    <a [href]='rutaejercicio' class="btn btn-danger">Descargar</a>
+  </div>
+  <div class="col-sm-12">
+    <img [attr.src]="rutaimagen | secure | async" class="col-sm-12">
+    <p class="text-center">{{lesson?.nombremostrado}}</p>
+  </div>
+</div>
+

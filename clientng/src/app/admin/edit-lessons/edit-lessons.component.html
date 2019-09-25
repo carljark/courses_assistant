@@ -1,0 +1,14 @@
+<div #subirarch class="col-sm-4 offset-sm-4">
+  <button type="button" (click)="initportada()" class="btn btn-success">
+    Reiniciar la tabla portada
+  </button>
+  <app-upload-lessons
+    (lesson)="onLesson($event)"
+  ></app-upload-lessons>
+</div>
+<div class="row">
+  <div class="col-sm-3" *ngFor="let lesson of lessons">
+    <admin-lesson-dashboard [lesson]="lesson" (deletedLesson)="borrarImagen($event)"></admin-lesson-dashboard>
+  </div>
+</div>
+<app-lesson-table></app-lesson-table>

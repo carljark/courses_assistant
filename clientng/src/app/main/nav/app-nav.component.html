@@ -1,0 +1,14 @@
+<div class="topnav sticky-top" id="myTopnav">
+    <a *ngIf="logueado" routerLink="/cursos" routerLinkActive="active">Cursos</a>
+    <a routerLink="/angular" routerLinkActive="active">Angular</a>
+
+    <a *ngIf="!logueado" routerLink="/login" routerLinkActive="active">Login</a>
+    <a *ngIf="!logueado" routerLink="/registro" routerLinkActive="active">Registro</a>
+    <a *ngIf="admin" routerLink="/admin" routerLinkActive="active">Admin</a>
+    <a *ngIf="admin" routerLink="/users" routerLinkActive="active">Usuarios</a>
+    <a href="javascript:void(0);" *ngIf="logueado" (click)="logout()">Logout</a>
+  <a href="javascript:void(0);" class="icon" (click)="clicked()">&#9776;</a>
+</div>
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div>

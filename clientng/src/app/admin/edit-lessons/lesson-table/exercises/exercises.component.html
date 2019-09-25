@@ -1,0 +1,39 @@
+<div class="cabecera">
+  <div style="background-color: aqua">id</div>
+  <div style="background-color: rgb(84, 168, 63)">archivo</div>
+  <div style="background-color: rgb(182, 115, 71)">idcurso</div>
+  <div style="background-color: rgb(55, 136, 173)">resuelto</div>
+  <div style="background-color: rgb(125, 94, 197)">editar</div>
+  <div style="background-color: rgb(207, 46, 154)">borrar</div>
+</div>
+<div *ngFor="let exercise of exercises">
+  <div class="fila">
+    <div>{{ exercise.id }}</div>
+    <div>
+      <input
+        type="text"
+        [value]="exercise.archivo"
+        [(ngModel)]="exercise.archivo"
+        [readonly]="!exercise.editSiNo"
+      />
+    </div>
+    <div>
+      <input
+        type="text"
+        [value]="exercise.idsnapshot"
+        [(ngModel)]="exercise.idsnapshot"
+        [readonly]="!exercise.editSiNo"
+      />
+    </div>
+    <div>
+      <input
+        type="checkbox"
+        [value]="exercise.resuelto"
+        [(ngModel)]="exercise.resuelto"
+        [disabled]="!exercise.editSiNo"
+      />
+    </div>
+    <div><button type="button" (click)="habilitarEdit(exercise)">edit</button></div>
+    <div><button type="button" (click)="delExer(exercise.id)">del</button></div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+type Lesson {
+  id: String
+  nombremostrado: String
+  archivo: String
+  serie: String
+  editsino: Boolean
+  idcurso: Int
+  text: String
+  fulltext: String
+}
+type Exercise {
+  id: Int
+  idlesson: Int
+  archivo: String
+}
+type Query {
+  lesson(id: Int!): Lesson
+  lessons(idcurso: Int!): [Lesson]
+  bien(idcurso: Int!): [Lesson]
+  cojones(idcurso: Int!): [Lesson]
+}
+type Mutation {
+  post(lesson: LessonInput!): Lesson!
+  updatelessontext(lesson: LessonInput!): Lesson!
+  delexer(id: Int!): Lesson!
+}
+input LessonInput {
+  id: Int
+  archivo: String
+  nombremostrado: String
+  idcurso: Int
+  tipoarchivo: String
+  text: String
+}
+input IdInput {
+  id: Int
+}
+

@@ -1,0 +1,10 @@
+<select name="tipoarchivo" id="tipoarchivo" (change)="changeTypeFile($event)">
+    <option value="ejercicio">Ejercicio</option>
+    <option value="texto">Texto</option>
+</select>
+<app-upload-files
+[tipoarchivo]="tipoarchivo"
+[lesson]="lesson"
+(ejercicio)="onEjercicio($event)"
+(updateText)="onLessonUpdateText($event)"
+></app-upload-files>

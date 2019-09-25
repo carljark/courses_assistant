@@ -1,0 +1,103 @@
+<div class="container">
+  <form class='padding2' [formGroup]='userForm' (ngSubmit)='onSubmit()'>
+    <div class='input-area'> 
+     <label for='nombre'>Tu nombre</label>
+     <input type="text" name='nombre' formControlName='nombre' required>
+   </div>
+   <div *ngIf="nombre.errors?.pattern">
+          El nombre no es válido.
+   </div> 
+   
+   <div class='input-area'>
+     <label for='surname'>Apellidos</label>
+     <input type="text" name='surname' formControlName='apellidos' required>
+     <!-- {{ apellidos.valid }} -->
+    </div>
+    
+    <div class='input-area'>
+      <label for='pais'>País</label>
+      <select class="form-control" id='pais' formControlName='pais' #country name="pais">
+        <option *ngFor='let pais of paises' [value]='pais'>{{ pais }}</option>
+      </select>
+      <!-- {{ getpais.valid }} -->
+    </div>
+    
+    <div class='input-area'>
+      <label for='provincia'>Provincia</label>
+      <!--select id='provincia' class="form-control" formControlName='provincia' #provincia name="provincia">
+        <option *ngFor='let provincia of provincias' [value]='provincia'>{{ provincia }}</option>
+      </select-->
+      <input type="text" name='provincia' formControlName='provincia'>
+      <!-- {{ getprov.valid }} -->
+    </div>
+    
+    <div class='input-area'>
+      <label for='domicilio'>Domicilio</label>
+      <input type="text" name='domicilio' formControlName='domicilio'>
+      <!-- {{ domicilio.valid }} -->
+    </div>
+    
+    <div class='input-area'>
+      <label for='cPostal'>Código postal</label>
+      <input id='cPostal'
+             type="text"
+             placeholder="Código Postal"
+             title="Por favor, introduce tu código postal"
+             name='cPostal'
+             formControlName='cPostal'>
+      <!-- {{ cPostal.valid }} -->
+    </div>
+    
+    <div class='input-area'>
+      <label for='mail'>Email</label>
+      <input id='mail' type='email' name='mail' formControlName='mail' required>
+      <div *ngIf="yaregistrado">
+          Esta dirección de correo ya está registrada
+        </div> 
+      <!-- {{ mail.valid }} -->
+    </div>
+    
+    <div class='input-area'>
+      <label for='tel'>Teléfono</label>
+      <input type='text' name='tel' formControlName='tel'>
+      <!-- {{ tel.valid }} -->
+    </div>
+    
+    <div formGroupName='repasswords'>
+      <div class='input-area'>
+        <label for='password'>Password</label>
+        <input id='password' type='password' name='password' formControlName='password' required>
+      </div>  
+      <div class='input-area'>
+        <label for='confirmPassword'>Confirmar Password</label>
+        <input id='confirmPassword' type='password' name='confirmPassword' formControlName='confirmPassword' required>
+      </div>
+<!--       {{ repasswords.status }}
+      {{ repasswords.valid }} -->
+      <div *ngIf="password.errors?.pattern">
+        La contraseña debe tener 8 caracteres como mínimo y contener numeros, minúsculas, mayúsculas y algún caracter especial.
+      </div> 
+      <div *ngIf="repasswords.errors?.NoMatchPassword">
+        Las contraseñas no coinciden.
+      </div> 
+    </div>
+    estado del formulario {{userForm.valid}}
+    
+    <button type='submit' [disabled]="!userForm.valid" class='btn'>Enviar</button>
+    <button type='button' class='btn' (click)='borrarUsuarioDePrueba()'>Borrar Usuario de prueba</button>
+    <button type='button' class='btn' (click)='rellenarConDatosDePrueba()'>Rellena con datos de prueba</button>
+    
+  </form>
+  
+
+  <div [hidden]='!submitted'>
+    <h2>Datos enviados:</h2>
+    Nombre: {{ user.nombre }}
+    Apellidos: {{ user.apellidos }}
+    País: {{ user.pais }}
+    Domicilio: {{ user.domicilio }}
+    C. Postal: {{ user.cPostal }}
+    Email: {{ user.mail }}
+    Teléfono: {{ user.tel }}
+  </div>
+</div>

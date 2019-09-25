@@ -1,0 +1,9 @@
+<div class="row no-gutters">
+  <div *ngFor="let lesson of lessons" class="col-sm-6">
+    <a routerLink="/lesson/{{lesson.id}}">
+      <img [attr.src]="origenImagenes + lesson.archivo | secure | async" class="col-sm-12">
+      <p class="text-center">{{lesson.nombremostrado}}</p>
+    </a>
+  </div>
+</div>
+

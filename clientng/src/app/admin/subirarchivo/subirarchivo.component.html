@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>Subir Ficheros</h1>
+  <form action="upload.php" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <input #subir type="file" multiple hidden (change)="onFileChanged($event)">
+        <button type="button" class="btn btn-info" (click)='subir.click()'>Elegir</button>
+        <button type="submit" class="btn btn-success" (click)='enviarfichero()'>Enviar</button>
+    </div>
+  </form>
+</div>

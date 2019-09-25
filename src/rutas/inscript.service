@@ -1,0 +1,2 @@
+import InterfazInscrip from '../modelos/inscripciones';
+            InterfazInscrip.conseguirPorIdusuario(user.id)

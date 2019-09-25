@@ -1,0 +1,42 @@
+<div *ngIf="currentLesson" class="fila">
+  <div>Id: {{ currentLesson.id }}</div>
+
+  <div class="colizq">
+    <label for="nombremostrado">Mostrado:</label>
+    <input
+      name="nombremostrado"
+      type="text"
+      [value]="currentLesson.nombremostrado"
+      [(ngModel)]="currentLesson.nombremostrado"
+      [readonly]="!currentLesson.nombremostrado"
+    />
+  </div>
+  <div class="colizq">
+    <label for="archivo">Archivo:</label>
+    <input
+      name="archivo"
+      type="text"
+      [value]="currentLesson.archivo"
+      [(ngModel)]="currentLesson.archivo"
+      [readonly]="!currentLesson.editsino"
+    />
+  </div>
+  <div class="colizq">
+    <label for="serie">Serie:</label>
+    <input
+      name="serie"
+      type="text"
+      [value]="currentLesson.serie"
+      [(ngModel)]="currentLesson.serie"
+      [readonly]="!currentLesson.editsino"
+    />
+  </div>
+  <div>Id Course: {{ currentLesson.idcurso }}</div>
+  <div>
+    <button type="button" (click)="habilitarEdit(currentLesson)">edit</button>
+  </div>
+  <div>
+    <button type="button" (click)="deleteLesson(currentLesson)">del</button>
+  </div>
+</div>
+<app-exercises></app-exercises>

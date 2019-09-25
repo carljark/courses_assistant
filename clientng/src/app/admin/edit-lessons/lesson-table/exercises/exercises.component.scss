@@ -1,0 +1,35 @@
+.ver {
+    display: none;
+}
+
+.cabecera {
+    display: flex;
+    background-color: #225079;
+    color: white;
+    height: 50px;
+
+    justify-content: stretch;
+    align-items: center;
+}
+
+.cabecera > div {
+    width: 100%;
+    text-align: center;
+}
+
+
+
+
+
+.fila {
+    display: flex;
+    background-color: rgb(188, 206, 161);
+    color: black;
+    height: 50px;
+    justify-content: stretch;
+    align-items: center;
+}
+
+.fila > div {
+    width: 100%;
+}

@@ -143,7 +143,7 @@ class InterfazSnapshopts {
         const lessonDir = `${this.pathLessonBase}/${lessonFinded.idcurso}/${config.lessonsDirName}/${id}`;
         fs.access(lessonDir, (errAccess) => {
           if (errAccess) {
-            console.log('errAccessdir: ', errAccess);
+            // console.log('errAccessdir: ', errAccess);
           } else {
             rmDirAsync(`${lessonDir}`, (err) => {
                 if (err) {

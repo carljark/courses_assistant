@@ -4,13 +4,13 @@
     "driver": "postgres",
     "user": "mastergodoy",
     "database": "cursosdev",
-    "password": "1aB|pori"
+    "password": "porito"
   },
   "production": {
-    "host": "",
+    "host": "db",
     "driver": "postgres",
     "user": "mastergodoy",
     "database": "cursos",
-    "password": "1aB|pori"
+    "password": "porito"
   }
 }

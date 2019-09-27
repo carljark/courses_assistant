@@ -1,0 +1,24 @@
+version: '3'
+services:
+  app:
+    container_name: nodets
+    restart: always
+    build: .
+    ports:
+      - '8443:8443'
+    links:
+      - db
+    environment:
+      DATABASE_URL: postgres://mastergodoy:porito@db:5432/cursos
+  db:
+    container_name: db
+    build: ./docker_postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./dbdata:/dbdatapersistent
+    environment:
+      - POSTGRES_DB=cursos
+      - POSTGRES_USER=mastergodoy
+      - POSTGRES_PASSWORD=porito
+      - ALLOW_IP_RANGE=0.0.0.0/0

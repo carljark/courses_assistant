@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "prestart": "yarn",
+    "prestart": "npm i",
     "start": "cross-env NODE_ENV=production node dist",
     "dev": "cross-env NODE_ENV=development nodemon dist",
     "build": "tsc"

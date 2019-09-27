@@ -1,0 +1,3 @@
+CREATE USER mastergodoy;
+CREATE DATABASE cursos;
+GRANT ALL PRIVILEGES ON DATABASE cursos TO mastergodoy;

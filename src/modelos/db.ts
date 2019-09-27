@@ -1,7 +1,5 @@
 import Sequelize from 'sequelize';
-
 import { dev, production } from './database.json';
-
 import config, {mode} from '../environment';
 import { Iconfigdb } from './configdb.class';
 
@@ -18,6 +16,10 @@ class CrearDb {
         } else {
             this.cf = production;
         }
+
+        // const dburl = process.env.DATABASE_URL;
+        // this.sequelize = new Sequelize(process.env.DATABASE_URL);
+        // console.log('DATABASE_URL: ', dburl);
 
         this.sequelize = new Sequelize(
             this.cf.database,

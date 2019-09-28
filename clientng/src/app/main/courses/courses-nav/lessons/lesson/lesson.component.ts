@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Lesson } from '../../../../../shared/lesson.class';
-import { ImagenesService } from '../../../../../shared/imagenes.service';
-import { Exercise } from '../../../../../admin/exercise.class';
+import { Lesson } from '../../../../../shared/interfaces/lesson.class';
+import { ImagenesService } from '../../../../../shared/services/imagenes.service';
+import { Exercise } from '../../../../../shared/interfaces/exercise.class';
 import {Observable, Subscription} from 'rxjs';
 import { tap, switchMap } from 'rxjs/operators';
 

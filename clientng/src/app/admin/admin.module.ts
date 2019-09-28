@@ -14,7 +14,7 @@ import {UploadFilesComponent} from './edit-lessons/lesson-dashboard/upload-exerc
 
 import {FormUsuarioComponent} from './form-usuario/form-usuario.component';
 
-import {LessonComponent} from './edit-lessons/lesson-table/lesson.component';
+import {LessonComponent} from './edit-lessons/lesson-table/lesson-table.component';
 import {LessonDashboardComponent} from './edit-lessons/lesson-dashboard/lesson-dashboard.component';
 
 import {ExercisesComponent} from './edit-lessons/lesson-table/exercises/exercises.component';

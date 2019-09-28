@@ -1,11 +1,11 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import {Observable, Subscription} from 'rxjs';
-import { SendfichService } from '../sendfich.service';
-import { Lesson } from '../../shared/lesson.class';
-import { Exercise } from '../exercise.class';
-import { camelize } from '../../shared/camelize';
-import { LoginService } from '../../shared/login.service';
-import IdCursoNombre from '../../shared/clase.idcursonombre';
+import { SendfichService } from '../../shared/services/sendfich.service';
+import { Lesson } from '../../shared/interfaces/lesson.class';
+import { Exercise } from '../../shared/interfaces/exercise.class';
+import { camelize } from '../../shared/functions/camelize';
+import { LoginService } from '../../shared/services/login.service';
+import IdCursoNombre from '../../shared/interfaces/clase.idcursonombre';
 
 @Component({
   selector: 'app-subirarchivo',

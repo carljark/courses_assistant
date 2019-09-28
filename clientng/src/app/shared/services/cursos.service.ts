@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LoginService } from './login.service';
-import IdCursoNombre from './clase.idcursonombre';
+import IdCursoNombre from '../interfaces/clase.idcursonombre';
 import {BehaviorSubject, Subject} from 'rxjs';
 
 @Injectable({

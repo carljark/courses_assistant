@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { CursosService } from '../../shared/cursos.service';
-import {LessonsService} from '../lessons.service';
-import { LoginService } from '../../shared/login.service';
-import IdCursoNombre from '../../shared/clase.idcursonombre';
-import { ImagenesService } from '../../shared/imagenes.service';
-import {Lesson} from '../../shared/lesson.class';
+import { CursosService } from '../../shared/services/cursos.service';
+import {LessonsService} from '../../shared/services/lessons.service';
+import { LoginService } from '../../shared/services/login.service';
+import IdCursoNombre from '../../shared/interfaces/clase.idcursonombre';
+import { ImagenesService } from '../../shared/services/imagenes.service';
+import {Lesson} from '../../shared/interfaces/lesson.class';
+import {BackupService} from '../../shared/services/backup.service';
 
 @Component({
   selector: 'admin-nav',
@@ -33,6 +34,7 @@ export class AdminNavComponent implements OnInit {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
+    private backupService: BackupService,
     private curserv: CursosService,
     private logser: LoginService,
     private imgServ: ImagenesService,
@@ -43,25 +45,16 @@ export class AdminNavComponent implements OnInit {
     this.lessons$ = this.imgServ.getLessonsSubject();
   }
   ngOnInit() {
-    // no subscribe hasta que no se emite en el servicio
-    // con behaviorsubject se emiten los cursos que habia en cada subscripcion
     this.coursesSubs = this.courses$
     .subscribe(cs => {
-      console.log('paso por aquí?');
-      // console.log('cs: ', cs);
       this.courses = cs;
-      // this.cursoActual = this.cursos[0];
       this.actualCourse = this.logser.getCursoActual();
-
-      // this.lessons = this.imgServ.getSnapshotsUpdate(this.actualCourse.idcurso);
-      // this.selectLesson(this.lessons[0]);
     });
 
     // voy a hacer una segunda subscripcion a las lessons
     // dependa de los cursos, así que lo mis hay que fusionarlas
     this.lessonsSubs = this.lessons$
     .subscribe(lessons => {
-      console.log('se subscribe a lessons');
       this.lessons = lessons;
     });
   }
@@ -79,6 +72,13 @@ export class AdminNavComponent implements OnInit {
     // this.curserv.setCurrentCourse(cursoSelected);
     this.logser.setCursoActual(cursoSelected);
     this.actualCourse = cursoSelected;
+  }
+
+  public backup() {
+    this.backupService.backup()
+    .subscribe((ok) => {
+      console.log('ok: ', ok);
+    });
   }
 
 }

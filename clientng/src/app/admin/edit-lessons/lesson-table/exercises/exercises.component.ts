@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Exercise} from '../../../exercise.class';
-import {ExercisesService} from './exercises.service';
+import {Exercise} from '../../../../shared/interfaces/exercise.class';
+import {ExercisesService} from '../../../../shared/services/exercises.service';
 import { Observable, Subscription } from 'rxjs';
 
 @Component({

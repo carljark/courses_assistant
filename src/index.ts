@@ -8,7 +8,7 @@ import config, { mode } from './environment';
 
 if (mode === 'production') {
   const apphttp = express();
-  apphttp.use(rutaCheckIp);
+  // apphttp.use(rutaCheckIp);
   const serverhttp = http.createServer(apphttp);
   const httpPort = 8080;
   serverhttp.listen(httpPort, () => {

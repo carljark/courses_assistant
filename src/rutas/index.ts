@@ -3,6 +3,7 @@ import {  json, NextFunction, Request, Response, Router, static as estaticExpres
 import path from 'path';
 
 import updateRoute from './actualizar';
+import backupRoute from './backupdb';
 import initPortRoute from './initsnapshots';
 import insertRoute from './insert';
 import insertFilesRoute from './insertfiles';
@@ -14,7 +15,7 @@ import usersRoute from './users';
 
 import checkip from './checkip';
 
-import config from '../environment';
+import config, {mode} from '../environment';
 
 const allowCrossDomain = (req: Request, res: Response, next: NextFunction) => {
   res.header('Access-Control-Allow-Origin', '*'); // here you can restrict Origin
@@ -29,8 +30,9 @@ class PostRouter {
   public router: Router;
   constructor() {
     this.router = Router();
-    // this.router.use(cors());
-    this.router.use(allowCrossDomain);
+    this.router.use(cors());
+    // allowCrossDomain falla
+    // this.router.use(allowCrossDomain);
     this.router.use(json());
     this.router.use(urlencoded({ extended: false }));
     this.routes();
@@ -43,8 +45,12 @@ class PostRouter {
   }
 
   public routes() {
-    this.router.use(checkip);
-    this.router.use('/autenticar', loginRoute);
+    // cuidado con checkip, la redireccion envia un res que
+    // provoca que se establezcan los headers después de haberlos
+    // enviado
+    // this.router.use(checkip);
+    this.router.use('/login', loginRoute);
+    this.router.use('/backup', backupRoute);
     this.router.use('/graphql', comprobartoken);
     this.router.use('/api', comprobartoken);
     this.router.use('/api/users', usersRoute);
@@ -56,6 +62,19 @@ class PostRouter {
     this.router.use('/api/insertar', insertRoute);
     this.router.use('/api/countries', this.countries);
     this.router.use('/files', insertFilesRoute);
+    // if mode development not serve ng compiled
+    // instead check route url and res erro
+    /* if (mode !== 'production') {
+      this.router.all('/*', (req: Request, res: Response, next: NextFunction) => {
+        console.log('se ha solicitado una ruta que no existe');
+        res.sendStatus(500).end('no existe la ruta');
+      });
+    } else {
+      this.router.use('/', estaticExpress(path.join(__dirname, '../../clientng/dist/curseitorng')));
+      this.router.all('/*', (req: Request, res: Response, next: NextFunction) => {
+        res.sendFile('index.html', { root: (path.join(__dirname, '../../clientng/dist/curseitorng')) });
+      });
+    } */
     this.router.use('/', estaticExpress(path.join(__dirname, '../../clientng/dist/curseitorng')));
     this.router.all('/*', (req: Request, res: Response, next: NextFunction) => {
       res.sendFile('index.html', { root: (path.join(__dirname, '../../clientng/dist/curseitorng')) });

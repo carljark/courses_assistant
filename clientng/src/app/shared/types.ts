@@ -1,4 +1,4 @@
-import { Lesson } from './lesson.class';
+import { Lesson } from './interfaces/lesson.class';
 
 export class Imagen {
   id: number;

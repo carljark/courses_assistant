@@ -1,9 +1,9 @@
 // import * as Sequelize from 'sequelize';
 import db from './db';
 import { Observable } from 'rxjs';
-import { inscripcionesModel, inscripcionesInstance } from '../models/db';
+import { InscriptionsModel, InscriptionsInstance } from '../models/db';
 class InterfazInscripciones {
-  InscModel: inscripcionesModel;
+  InscModel: InscriptionsModel;
   constructor(){
     this.InscModel = db.import('../models/inscripciones');
   }
@@ -18,7 +18,7 @@ class InterfazInscripciones {
         idcurso: idcurso,
         caducidad: caducidad
       })
-      .then((x: inscripcionesInstance ) => {
+      .then((x: InscriptionsInstance ) => {
         observer.next(x.id);
       })
     });
@@ -28,7 +28,7 @@ class InterfazInscripciones {
     .then(onSuccess)
     .catch(onError);
   }
-  conseguirPorIdusuario(idusuario: number): Observable<inscripcionesInstance[]> {
+  conseguirPorIdusuario(idusuario: number): Observable<InscriptionsInstance[]> {
     return new Observable(observer => {
       this.InscModel.findAll({ where: {idusuario: idusuario} })
       .then(cursos => {
@@ -47,7 +47,7 @@ class InterfazInscripciones {
   }
   borrarporId(id: number){
       this.InscModel.findOne({where: {id: id}})
-      .then((resultado: inscripcionesInstance) => {
+      .then((resultado: InscriptionsInstance) => {
         this.InscModel.destroy({where: {id: id} })
           .then(() => {
             console.log('inscripcion borrada de la base de datos');

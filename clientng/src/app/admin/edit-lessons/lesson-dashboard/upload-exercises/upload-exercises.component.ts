@@ -1,7 +1,7 @@
 import { Component, OnInit, Input} from '@angular/core';
-import { Exercise } from '../../../exercise.class';
-import { ImagenesService } from '../../../../shared/imagenes.service';
-import { Lesson } from '../../../../shared/lesson.class';
+import { Exercise } from '../../../../shared/interfaces/exercise.class';
+import { ImagenesService } from '../../../../shared/services/imagenes.service';
+import { Lesson } from '../../../../shared/interfaces/lesson.class';
 @Component({
   selector: 'app-upload-exercises',
   templateUrl: './upload-exercises.component.html',

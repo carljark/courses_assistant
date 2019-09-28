@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { PasswordValidation } from './validadores.class';
-import { User } from './../models/user.model';
-import { PersonasDb } from './../models/dbinterfaces';
-import { UsuariosService } from './../services/usuarios.service';
-import { PaisesService } from './../services/paises.service';
+import { User } from '../../shared/interfaces/user.model';
+import { PersonasDb } from '../../shared/interfaces/dbinterfaces';
+import { UsuariosService } from '../../shared/services/users.service';
+import { PaisesService } from '../../shared/services/paises.service';
 
 export const passwordDiferenteValidator: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
   const uno = control.get('password');

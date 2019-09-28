@@ -3,11 +3,11 @@ import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Apollo } from 'apollo-angular';
-import IdCursoNombre from '../shared/clase.idcursonombre';
-import { CursosService } from '../shared/cursos.service';
+import IdCursoNombre from '../interfaces/clase.idcursonombre';
+import { CursosService } from './cursos.service';
 import gql from 'graphql-tag';
-import { Query } from '../shared/types';
-import {Lesson} from '../shared/lesson.class';
+import { Query } from '../types';
+import {Lesson} from '../interfaces/lesson.class';
 
 @Injectable({
   providedIn: 'root'
@@ -71,12 +71,15 @@ export class LessonsService {
   }
 
   setCurrentLesson(lesson: Lesson) {
-    console.log('cambio de leccion y se emite');
     this.currentLesson = lesson;
     this.currentLessonSubject.next(lesson);
   }
 
   getCurrentLesson$(): BehaviorSubject<Lesson> {
       return this.currentLessonSubject;
+  }
+
+  cambiarPropEditSiNo(objeto: Lesson) {
+    objeto.editsino = !objeto.editsino;
   }
 }

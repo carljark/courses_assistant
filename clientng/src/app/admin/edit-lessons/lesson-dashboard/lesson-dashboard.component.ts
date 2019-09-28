@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
-import { Lesson } from '../../../shared/lesson.class';
-import { ImagenesService } from '../../../shared/imagenes.service';
-import { camelize } from '../../../shared/camelize';
+import { Lesson } from '../../../shared/interfaces/lesson.class';
+import { ImagenesService } from '../../../shared/services/imagenes.service';
+import { camelize } from '../../../shared/functions/camelize';
 
 import {Observable, Subscription} from 'rxjs';
 

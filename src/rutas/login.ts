@@ -1,15 +1,12 @@
 // var express = require('express');
 import { Request, Response, Router } from 'express';
 import * as fs from 'fs';
-
+import jwt, { SignOptions } from 'jsonwebtoken';
+import IdCursoNombre from '../clase.idcursonombre';
 import Cursos from '../modelos/cursos';
 import InterfazInscrip from '../modelos/inscripciones';
 import users from '../modelos/usuarios';
-
-import * as jwt from 'jsonwebtoken';
-import { SignOptions } from 'jsonwebtoken';
-import IdCursoNombre from '../clase.idcursonombre';
-import { cursosInstance } from '../models/db';
+import { IcursosInstance } from '../models/db';
 
 class RouterLogin {
   public router: Router;
@@ -21,7 +18,6 @@ class RouterLogin {
     users.getByName(req.body.username)
       .subscribe((user) => {
         if (user) {
-
           if (user.password === req.body.password) {
             // comprobar la fecha de la suscripcion (inscripción)
             // obtener la lista de cursos a los que el usuario está
@@ -31,7 +27,7 @@ class RouterLogin {
               .subscribe((usucursos) => {
                 // console.log('usucursos: ', usucursos);
                 let listacursos = '';
-                let cursosbd: cursosInstance[];
+                let cursosbd: IcursosInstance[];
                 let idcurso: string;
                 const tam = usucursos.length;
                 const idscursosnombres: IdCursoNombre[] = new Array(tam);

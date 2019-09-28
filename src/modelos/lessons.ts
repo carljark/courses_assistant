@@ -23,7 +23,7 @@ class InterfazSnapshopts {
     return new InterfazSnapshopts();
   }
 
-  public LessonsModel: dbDef.snapshotsModel;
+  public LessonsModel: dbDef.IlessonsModel;
 
   private pathLessonBase = join(__dirname, '../../', config.dirPublicName);
 

@@ -2,7 +2,7 @@ import { ApolloServer,  Config, gql } from 'apollo-server-express';
 
 import Lesson from '../lesson.class';
 
-import {ejerciciosInstance, snapshotsInstance} from '../models/db';
+import {IexercisesInstance, IlessonsInstance} from '../models/db';
 
 import db from '../modelos/db';
 const LessonsTable = db.import('../models/lessons');
@@ -48,7 +48,7 @@ const resolvers = {
       // en este caso el id solicitado desde el cliente
     }, */
     delexer: async (parent, {id}: {id: number}, contexto: any) => {
-      const result = await ExercisesTable.findOne({ where: { id }}) as ejerciciosInstance;
+      const result = await ExercisesTable.findOne({ where: { id }}) as IexercisesInstance;
       const exercise: Exercise = {
         archivo: result.archivo,
         id: result.id,
@@ -60,13 +60,13 @@ const resolvers = {
     post: async (parent, {lesson}: {lesson: Lesson}, contexto: any) => {
       console.log('lesson: ', lesson);
       const lesarray = await LessonsTable.upsert(lesson, { returning: true });
-      const les = lesarray[0] as snapshotsInstance;
+      const les = lesarray[0] as IlessonsInstance;
       console.log('leccion creada: ', les.get());
       return les.get();
     },
     updatelessontext: async (parent, {lesson}: {lesson: Lesson}, contexto: any) => {
       const lesarray = await LessonsTable.upsert(lesson, { returning: true });
-      const les = lesarray[0] as snapshotsInstance;
+      const les = lesarray[0] as IlessonsInstance;
       console.log('lesson a actualizar: ', lesson);
       console.log('leccion actualizada: ', les.get());
       return les.get();

@@ -1,12 +1,13 @@
 import Sequelize from 'sequelize';
-import { dev, production } from './database.json';
 import config, {mode} from '../environment';
 import { Iconfigdb } from './configdb.class';
+import { dev, production } from './database.json';
 
 // tengo repetidos los datos de la configuración de la base de datos
 // en environment y en database.json, corregir
 
-class CrearDb {
+export class DefineDb {
+    public static authenticated = false;
     public cf: Iconfigdb;
     public sequelize: Sequelize.Sequelize;
 
@@ -31,11 +32,21 @@ class CrearDb {
                 },
                 dialect: this.cf.driver,
                 host: this.cf.host,
-                logging: console.log,
+                // logging: console.log,
+                logging: false,
                 operatorsAliases: false,
             },
         );
+        this.sequelize.authenticate()
+        .then(() => {
+          console.log('Connection has been established successfully.');
+          DefineDb.authenticated = true;
+        })
+        .catch((err) => {
+          console.error('Unable to connect to the database');
+          DefineDb.authenticated = false;
+        });
     }
 }
-const db = new CrearDb().sequelize;
+const db = new DefineDb().sequelize;
 export default db;

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
-import { Observable, throwError, from } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
-import { User, UseryToken, Credenciales } from '../models/user.model';
+import { Observable } from 'rxjs';
+import { catchError} from 'rxjs/operators';
+import { User, UseryToken, Credenciales } from '../interfaces/user.model';
 import {environment} from '../../../environments/environment';
 
 @Injectable({

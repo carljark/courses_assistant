@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import IdCursoNombre from '../../../shared/clase.idcursonombre';
-import { CursosService } from '../../../shared/cursos.service';
-import { LoginService } from '../../../shared/login.service';
+import IdCursoNombre from '../../../shared/interfaces/clase.idcursonombre';
+import { CursosService } from '../../../shared/services/cursos.service';
+import { LoginService } from '../../../shared/services/login.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subscription, BehaviorSubject } from 'rxjs';
-import { Exercise } from '../../../exercise.class';
-import { environment } from '../../../../../environments/environment';
-import { LoginService } from '../../../../shared/login.service';
+import { Exercise } from '../interfaces/exercise.class';
+import { environment } from '../../../environments/environment';
+import { LoginService } from './login.service';
 import { HttpClient } from '@angular/common/http';
 
-import { LessonsService } from '../../../lessons.service';
-import { Lesson } from '../../../../shared/lesson.class';
+import { LessonsService } from './lessons.service';
+import { Lesson } from '../interfaces/lesson.class';
 import { switchMap } from 'rxjs/operators';
 
 import { Apollo } from 'apollo-angular';
@@ -53,21 +53,16 @@ export class ExercisesService {
 
   descargarEjercicio(): void {
     // se obtendrá un array de resultados que habrá que desglosar con un foreach cuando haya más de 1 ejercicio por lección
-    console.log('id de la lección: ', this.idcurso);
-    console.log('this.ejercicio.archivo: ', this.ejercicio.archivo);
     this.getExercises(this.idcurso).subscribe(ej => {
       this.ejercicio = ej[0];
-      console.log('ej: ', this.ejercicio);
       // al recargar el id es incorrecto
       this.rutaejercicio = `${this.origenimagenes}${this.idcurso}/ejercicio/${
         this.ejercicio.archivo
       }`;
-      console.log('rutaejercicio: ', this.rutaejercicio);
     });
   }
 
   getExercises(idlesson: number): Observable<Exercise[]> {
-    console.log('llegamos a obtenerEjercicios');
     // cambiar por una consulta a graphql
     const url = `${this.urlapi}/ejercicios`;
     const body = { idlesson };
@@ -80,7 +75,6 @@ export class ExercisesService {
 
   insertarEjerciciodb(ejercicio: Exercise): Observable<number> {
     const urlinsertar = `${this.urlbase}/api/insertar/ejercicio`;
-    console.log('ejercicio: ', ejercicio);
     const body = ejercicio;
     return this.http.post<number>(
       urlinsertar,

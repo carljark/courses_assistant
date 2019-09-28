@@ -2,16 +2,18 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Observable, Subject, BehaviorSubject } from 'rxjs';
-import AuthClient from './clase.authclient';
-import IdCursoNombre from './clase.idcursonombre';
-import {environment} from '../../environments/environment';
+import AuthClient from '../interfaces/clase.authclient';
+import IdCursoNombre from '../interfaces/clase.idcursonombre';
+import {environment} from '../../../environments/environment';
 
 class User {
   username: string;
   password: string;
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class LoginService {
 
   cursoActual: IdCursoNombre = {
@@ -41,7 +43,7 @@ export class LoginService {
   constructor(
     private http: HttpClient
   ) {
-    this.urlbase = `${environment.urlServer}/autenticar`;
+    this.urlbase = `${environment.urlServer}/login`;
     if (this.getLocalToken()) {
       this.setLogueado();
       this.userid = this.getUserId();

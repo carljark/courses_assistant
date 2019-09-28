@@ -4,21 +4,35 @@ services:
     container_name: nodets
     restart: always
     build: .
+    networks:
+      sshnet:
+        ipv4_address: 172.28.1.1
     ports:
       - '8443:8443'
-    links:
-      - db
     environment:
-      DATABASE_URL: postgres://mastergodoy:porito@db:5432/cursos
+      DATABASE_HOST: db
+      DATABASE_URL: postgres://mastergodoy:porito@172.28.1.2:5432/cursos
+    volumes:
+      - ./publiccourses:/usr/src/app/publiccourses
+      - ./publiccoursesdev:/usr/src/app/publiccoursesdev
   db:
     container_name: db
     build: ./docker_postgres
-    ports:
-      - '5432:5432'
+    networks:
+      sshnet:
+        ipv4_address: 172.28.1.2
+    # ports:
+    #   - '5432:5432'
     volumes:
-      - ./dbdata:/dbdatapersistent
+      - ./docker_postgres:/usr/src/app/docker_postgres
     environment:
       - POSTGRES_DB=cursos
       - POSTGRES_USER=mastergodoy
       - POSTGRES_PASSWORD=porito
       - ALLOW_IP_RANGE=0.0.0.0/0
+networks:
+  sshnet:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.0.0/16

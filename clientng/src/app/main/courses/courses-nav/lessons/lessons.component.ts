@@ -1,8 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Lesson } from '../../../../shared/lesson.class';
+import { Lesson } from '../../../../shared/interfaces/lesson.class';
 import { Observable, Subscription } from 'rxjs';
-import { ImagenesService } from '../../../../shared/imagenes.service';
-
+import { ImagenesService } from '../../../../shared/services/imagenes.service';
 
 @Component({
   selector: 'app-lessons',
@@ -10,7 +9,6 @@ import { ImagenesService } from '../../../../shared/imagenes.service';
   styleUrls: ['./lessons.component.scss']
 })
 export class LessonsComponent implements OnInit, OnDestroy {
-
 
   origenImagenes$: Observable<string>;
   origenImgSubs: Subscription;

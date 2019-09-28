@@ -7,7 +7,7 @@
     "password": "porito"
   },
   "production": {
-    "host": "db",
+    "host": "172.28.1.2",
     "driver": "postgres",
     "user": "mastergodoy",
     "database": "cursos",

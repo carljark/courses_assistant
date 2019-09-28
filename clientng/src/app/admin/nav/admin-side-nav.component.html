@@ -6,6 +6,7 @@
     <mat-toolbar>
       Lecciones
     </mat-toolbar>
+    <button (click)="backup()">BackupDb</button>
     <mat-nav-list>
       <select name="cursos" id="cursos" (change)="changeCourse($event)">
         <option *ngFor="let course of courses" [value]="course.nombrecurso" [selected]="actualCourse.idcurso == course.idcurso">{{course.nombrecurso}}</option>
@@ -28,7 +29,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Editar Lecciones</span>
+      <span>{{actualCourse.nombrecurso}}</span>
     </mat-toolbar>
     <app-edit-lessons></app-edit-lessons>
     <!-- Add Content Here -->

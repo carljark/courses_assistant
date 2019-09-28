@@ -20,6 +20,7 @@ interface IConfig {
 interface IConfigModes {
     development: IConfig;
     production: IConfig;
+    dockerdev: IConfig;
 }
 
 const configurations: IConfigModes = {
@@ -37,11 +38,25 @@ const configurations: IConfigModes = {
         publicRouteName: 'courses',
         urlServer: 'http://localhost:8442',
     },
+    dockerdev: {
+        databaseConfig: {
+            database: 'cursosdev',
+            driver: 'postgres',
+            host: 'db',
+            password: '1aB|pori',
+            user: 'mastergodoy',
+        },
+        dirPublicName: 'publiccoursesdev',
+        lessonsDirName: 'lessons',
+        port: 8443,
+        publicRouteName: 'courses',
+        urlServer: 'https://carlosalbertogodoy.ddns.net',
+    },
     production: {
         databaseConfig: {
             database: 'cursos',
             driver: 'postgres',
-            host: '',
+            host: 'db',
             password: '1aB|pori',
             user: 'mastergodoy',
         },
@@ -56,6 +71,8 @@ const configurations: IConfigModes = {
 let config: IConfig;
 if (mode === 'development') {
     config = configurations.development;
+} else if (mode === 'dockerdev') {
+    config = configurations.dockerdev;
 } else {
     config = configurations.production;
 }

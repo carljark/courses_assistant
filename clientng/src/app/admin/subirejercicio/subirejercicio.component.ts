@@ -1,6 +1,6 @@
 import { Component, OnInit, Input} from '@angular/core';
-import { Exercise } from '../exercise.class';
-import { ImagenesService } from '../../shared/imagenes.service';
+import { Exercise } from '../../shared/interfaces/exercise.class';
+import { ImagenesService } from '../../shared/services/imagenes.service';
 
 @Component({
   selector: 'app-subirejercicio',

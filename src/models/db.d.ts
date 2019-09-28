@@ -1,51 +1,49 @@
-// tslint:disable
 import * as Sequelize from 'sequelize';
 
-
 // table: snapshots
-export interface snapshotsAttribute {
-	nombremostrado?:string;
-	archivo?:string;
-	serie?:string;
-	editsino?:boolean;
-	id?:number;
-	idcurso:number;
-	text?: string;
+export interface IlessonsAttribute {
+  nombremostrado?: string;
+  archivo?: string;
+  serie?: string;
+  editsino?: boolean;
+  id?: number;
+  idcurso: number;
+  text?: string;
 }
-export interface snapshotsInstance extends Sequelize.Instance<snapshotsAttribute>, snapshotsAttribute { }
-export interface snapshotsModel extends Sequelize.Model<snapshotsInstance, snapshotsAttribute> { }
+
+export interface IlessonsInstance extends Sequelize.Instance<IlessonsAttribute>, IlessonsAttribute { }
+export interface IlessonsModel extends Sequelize.Model<IlessonsInstance, IlessonsAttribute> { }
 
 // table: usuarios
-export interface usuariosAttribute {
-	id:number;
-	nombre?:string;
-	password?:string;
+export interface IusersAttribute {
+  id: number;
+  nombre?: string;
+  password?: string;
 }
-export interface usuariosInstance extends Sequelize.Instance<usuariosAttribute>, usuariosAttribute { }
-export interface usuariosModel extends Sequelize.Model<usuariosInstance, usuariosAttribute> { }
+export interface IUsersInstance extends Sequelize.Instance<IusersAttribute>, IusersAttribute { }
+export interface IUsersModel extends Sequelize.Model<IUsersInstance, IusersAttribute> { }
 
-export interface cursosAttribute {
-	id:number;
-	nombrecurso?:string;
+export interface IcoursesAttribute {
+  id: number;
+  nombrecurso?: string;
 }
-export interface cursosInstance extends Sequelize.Instance<cursosAttribute>, cursosAttribute { }
-export interface cursosModel extends Sequelize.Model<cursosInstance, cursosAttribute> { }
+export interface IcursosInstance extends Sequelize.Instance<IcoursesAttribute>, IcoursesAttribute { }
+export interface IcoursesModel extends Sequelize.Model<IcursosInstance, IcoursesAttribute> { }
 
-
-export interface inscripcionesAttribute {
-	id:number;
-	idusuario:number;
-	idcurso:number;
-	caducidad:Date; // averiguar cuál es el mejor tipo para la fecha en postgresql con sequelize
+export interface InscriptionsAttribute {
+  id: number;
+  idusuario: number;
+  idcurso: number;
+  caducidad: Date; // averiguar cuál es el mejor tipo para la fecha en postgresql con sequelize
 }
-export interface inscripcionesInstance extends Sequelize.Instance<inscripcionesAttribute>, inscripcionesAttribute { }
-export interface inscripcionesModel extends Sequelize.Model<inscripcionesInstance, inscripcionesAttribute> { }
+export interface InscriptionsInstance extends Sequelize.Instance<InscriptionsAttribute>, InscriptionsAttribute { }
+export interface InscriptionsModel extends Sequelize.Model<InscriptionsInstance, InscriptionsAttribute> { }
 
-export interface ejerciciosAttribute {
-	id:number;
-	idlesson:number;
-	archivo:string;
-	resuelto?:string;
+export interface IexercisesAttribute {
+  id: number;
+  idlesson: number;
+  archivo: string;
+  resuelto?: string;
 }
-export interface ejerciciosInstance extends Sequelize.Instance<ejerciciosAttribute>, ejerciciosAttribute { }
-export interface ejerciciosModel extends Sequelize.Model<ejerciciosInstance, ejerciciosAttribute> { }
+export interface IexercisesInstance extends Sequelize.Instance<IexercisesAttribute>, IexercisesAttribute { }
+export interface IexercisesModel extends Sequelize.Model<IexercisesInstance, IexercisesAttribute> { }

@@ -1,24 +1,28 @@
-/* jshint indent: 1 */
-// tslint:disable
-import * as sequelize from 'sequelize';
-import {DataTypes} from 'sequelize';
-import {cursosInstance, cursosAttribute} from './db';
+import * as seqlz from 'sequelize';
+import {DataTypes as DatTypes} from 'sequelize';
+import {
+  IcoursesAttribute,
+  IcursosInstance,
+} from './db';
 
-module.exports = function(sequelize: sequelize.Sequelize, DataTypes: DataTypes) {
-	return sequelize.define<cursosInstance, cursosAttribute>('cursos', {
-		id: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-			primaryKey: true,
-			autoIncrement: true,
-			field: 'id'
-		},
-		nombrecurso: {
-			type: DataTypes.STRING,
-			allowNull: true,
-			field: 'nombrecurso'
-		}
-	}, {
-		tableName: 'cursos'
-	});
+module.exports = function(sequelize: seqlz.Sequelize, DataTypes: DatTypes) {
+  return sequelize.define<IcursosInstance, IcoursesAttribute>('cursos',
+  {
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      field: 'id',
+      primaryKey: true,
+      type: DataTypes.INTEGER,
+    },
+    nombrecurso: {
+      allowNull: true,
+      field: 'nombrecurso',
+      type: DataTypes.STRING,
+    },
+  },
+  {
+    tableName: 'cursos',
+  },
+  );
 };

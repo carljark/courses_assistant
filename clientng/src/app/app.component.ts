@@ -1,6 +1,6 @@
 /*eslint new-cap: 0*/
 import { Component } from '@angular/core';
-import { LoginService } from './shared/login.service';
+import { LoginService } from './shared/services/login.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 

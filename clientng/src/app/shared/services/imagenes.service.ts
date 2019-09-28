@@ -2,19 +2,21 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { LoginService } from './login.service';
-import RespServ from './respserv.interface';
-import { Lesson } from './lesson.class';
-import { Exercise } from '../admin/exercise.class';
+import RespServ from '../interfaces/respserv.interface';
+import { Lesson } from '../interfaces/lesson.class';
+import { Exercise } from '../interfaces/exercise.class';
 import { Observable, Subscription, BehaviorSubject } from 'rxjs';
 import {map} from 'rxjs/operators';
-import {environment} from '../../environments/environment';
+import {environment} from '../../../environments/environment';
 
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
-import { Query, LessonInput} from './types';
-import IdCursoNombre from './clase.idcursonombre';
+import { Query, LessonInput} from '../types';
+import IdCursoNombre from '../interfaces/clase.idcursonombre';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ImagenesService {
 
   publicServerDir = 'courses';

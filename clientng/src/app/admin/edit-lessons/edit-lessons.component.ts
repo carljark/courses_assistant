@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ImagenesService } from '../../shared/imagenes.service';
-import { LoginService } from '../../shared/login.service';
+import { ImagenesService } from '../../shared/services/imagenes.service';
+import { LoginService } from '../../shared/services/login.service';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
-import {Lesson} from '../../shared/lesson.class';
+import {Lesson} from '../../shared/interfaces/lesson.class';
 
-import {LessonService} from './edit-lesson.service';
+import {LessonService} from '../services/edit-lesson.service';
 
 @Component({
   providers: [

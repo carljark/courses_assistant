@@ -28,12 +28,12 @@ class PostRouter {
       }
       const publicKey = data;
       if (req.headers.authorization) {
-        console.log('authorization: ', req.headers.authorization);
+        // console.log('authorization: ', req.headers.authorization);
         // if check authorization and exists Bearer, drop it
         let authorization = req.headers.authorization;
         const findBearer = authorization.indexOf('Bearer');
         if (findBearer >= 0) {
-          console.log('encontrado Bearer');
+          // console.log('encontrado Bearer');
           authorization = authorization.replace('Bearer ', '');
         }
         jwt.verify(
@@ -41,7 +41,7 @@ class PostRouter {
           publicKey,
           (errVerify: any, decoded: any) => {
             if (errVerify) {
-              console.log('errVerify: ', errVerify);
+              // console.log('errVerify: ', errVerify);
               res.json('no ha sido verificado el token en el middleware');
             } else {
               // console.log('index->comprobartoken->decoded: ', decoded);

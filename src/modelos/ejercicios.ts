@@ -1,9 +1,9 @@
 // import * as Sequelize from 'sequelize';
 import db from './db';
 import { Observable } from 'rxjs';
-import { ejerciciosModel, ejerciciosInstance } from '../models/db';
+import { IexercisesModel, IexercisesInstance } from '../models/db';
 class Interfazejercicios {
-  EjerModel: ejerciciosModel;
+  EjerModel: IexercisesModel;
   constructor(){
     this.EjerModel = db.import('../models/ejercicios');
   }
@@ -23,7 +23,7 @@ class Interfazejercicios {
     .then(onSuccess)
     .catch(onError);
   }
-  buscarporIdsnapshot(idsnapshot: number): Observable<ejerciciosInstance[]> {
+  buscarporIdsnapshot(idsnapshot: number): Observable<IexercisesInstance[]> {
     return new Observable(observer => {
       this.EjerModel.findAll({ where: {idlesson: idsnapshot} })
       .then(ejercicios => {
@@ -42,7 +42,7 @@ class Interfazejercicios {
   }
   borrarporId(id: number){
       this.EjerModel.findOne({where: {id: id}})
-      .then((resultado: ejerciciosInstance) => {
+      .then((resultado: IexercisesInstance) => {
         this.EjerModel.destroy({where: {id: id} })
           .then(() => {
             console.log('ejercicio borrado de la base de datos');

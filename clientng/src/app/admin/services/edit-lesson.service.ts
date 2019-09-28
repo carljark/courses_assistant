@@ -1,4 +1,4 @@
-import { Lesson } from '../../shared/lesson.class';
+import { Lesson } from '../../shared/interfaces/lesson.class';
 
 export class LessonService {
 

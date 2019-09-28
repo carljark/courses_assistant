@@ -1,11 +1,12 @@
 {
-  "name": "configceram",
+  "name": "courses_assistant",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
     "prestart": "npm i",
     "start": "cross-env NODE_ENV=production node dist",
-    "dev": "cross-env NODE_ENV=development nodemon dist",
+    "startlocaldev": "cross-env NODE_ENV=development nodemon dist",
+    "startdockerdev": "cross-env NODE_ENV=dockerdev nodemon dist",
     "build": "tsc"
   },
   "private": true,
@@ -43,6 +44,7 @@
     "@types/cors": "^2.8.4",
     "@types/express": "^4.16.0",
     "@types/formidable": "^1.0.31",
+    "@types/pg": "^7.11.2",
     "@types/sequelize": "^4.27.26",
     "babel-eslint": "^8.2.1",
     "eslint-plugin-import": "^2.14.0",

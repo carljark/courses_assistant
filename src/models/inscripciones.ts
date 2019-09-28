@@ -1,34 +1,35 @@
-/* jshint indent: 1 */
-// tslint:disable
-import * as sequelize from 'sequelize';
-import {DataTypes} from 'sequelize';
-import {inscripcionesInstance, inscripcionesAttribute} from './db';
+import * as sqlz from 'sequelize';
+import {DataTypes as DatTyps} from 'sequelize';
+import {
+  InscriptionsAttribute,
+  InscriptionsInstance,
+} from './db';
 
-module.exports = function(sequelize: sequelize.Sequelize, DataTypes: DataTypes) {
-	return sequelize.define<inscripcionesInstance, inscripcionesAttribute>('inscripciones', {
-		id: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-			primaryKey: true,
-			autoIncrement: true,
-			field: 'id'
-		},
-		idusuario: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-			field: 'idusuario'
-		},
-		idcurso: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-			field: 'idcurso'
-		},
-		caducidad: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-			field: 'caducidad'
-		}
-	}, {
-		tableName: 'inscripciones'
-	});
+module.exports = function(sequelize: sqlz.Sequelize, DataTypes: DatTyps) {
+  return sequelize.define<InscriptionsInstance, InscriptionsAttribute>('inscripciones', {
+    caducidad: {
+      allowNull: false,
+      field: 'caducidad',
+      type: DataTypes.INTEGER,
+    },
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      field: 'id',
+      primaryKey: true,
+      type: DataTypes.INTEGER,
+    },
+    idcurso: {
+      allowNull: false,
+      field: 'idcurso',
+      type: DataTypes.INTEGER,
+    },
+    idusuario: {
+      allowNull: false,
+      field: 'idusuario',
+      type: DataTypes.INTEGER,
+    },
+  }, {
+    tableName: 'inscripciones',
+  });
 };

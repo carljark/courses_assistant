@@ -13,12 +13,7 @@
     "esModuleInterop": true
   },
   "include": [
-    "src/*",
-    "./src/typings.d.ts",
-    "src/server/*",
-    "src/rutas/*",
-    "src/modelos/*",
-    "src/models/*"
+    "src/**/*.ts"
   ],
   "exclude": [
     "node_modules"

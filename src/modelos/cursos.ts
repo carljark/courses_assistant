@@ -1,9 +1,9 @@
 // import * as Sequelize from 'sequelize';
 import db from './db';
 import { Observable } from 'rxjs';
-import { cursosModel, cursosInstance } from '../models/db';
+import { IcoursesModel, IcursosInstance } from '../models/db';
 class InterfazCursos {
-  Cursos: cursosModel;
+  Cursos: IcoursesModel;
   constructor(){
     this.Cursos = db.import('../models/cursos');
   }
@@ -24,20 +24,20 @@ class InterfazCursos {
       // revisar: id null
       this.Cursos.create({ id: null, nombrecurso: nombrecurso })
       // revisar: x es una instancia?
-      .then((x: cursosInstance ) => {
+      .then((x: IcursosInstance ) => {
         observer.next(x.id);
       })
     });
   }
-  conseguirTodas(): Observable<cursosInstance[]> {
-    return new Observable<cursosInstance[]>(observer => {
+  conseguirTodas(): Observable<IcursosInstance[]> {
+    return new Observable<IcursosInstance[]>(observer => {
       this.Cursos.findAll({})
       .then(cursos => {
         observer.next(cursos);
       });
     })
   }
-  getByName(nombre: string): Observable<cursosInstance> {
+  getByName(nombre: string): Observable<IcursosInstance> {
     return new Observable ( observador => {
       this.Cursos.findOne({where: {nombrecurso: nombre}})
         .then(curso => {
@@ -56,7 +56,7 @@ class InterfazCursos {
   }
   borrarporId(id: number){
       this.Cursos.findOne({where: {id: id}})
-      .then((resultado: cursosInstance) => {
+      .then((resultado: IcursosInstance) => {
         this.Cursos.destroy({where: {id: id} })
           .then(() => {
             console.log('curso borrado de la base de datos');

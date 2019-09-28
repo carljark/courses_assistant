@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {environment} from '../../environments/environment';
+import {environment} from '../../../environments/environment';
 
 
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
-import { Query} from '../shared/types';
+import { Query} from '../types';
 import { Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class SendfichService {
   urlservidor = '';
   ficheroelegido: File = null;

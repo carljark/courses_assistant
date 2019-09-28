@@ -1,0 +1,1 @@
+pg_dump -U mastergodoy cursos -f /usr/src/app/docker_postgres/cursos.sql

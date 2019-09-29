@@ -4,7 +4,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import Snapshot from '../clasesnapshot';
 import config from '../environment';
-import modeloportada from '../modelos/lessons';
+import modeloportada from '../modelos/lessons-model';
 class PostRouter {
   public static camelize(str: string): string {
     return str

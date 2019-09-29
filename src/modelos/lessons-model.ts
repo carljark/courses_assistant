@@ -1,19 +1,12 @@
-// import * as Sequelize from 'sequelize';
 import fs from 'fs';
 import path from 'path';
-
 import { join } from 'path';
-
-import db from './db';
-
+import { Observable } from 'rxjs';
 import { camelize } from '../camelize';
 import Lesson from '../clasesnapshot';
-import * as dbDef from '../models/db';
-
-import { Observable } from 'rxjs';
-
 import config from '../environment';
-
+import * as dbDef from '../models-factory/db';
+import db from './db';
 import rmDirAsync from './rmdir';
 
 class InterfazSnapshopts {
@@ -28,7 +21,7 @@ class InterfazSnapshopts {
   private pathLessonBase = join(__dirname, '../../', config.dirPublicName);
 
   constructor() {
-    this.LessonsModel = db.import('../models/lessons');
+    this.LessonsModel = db.import('../models-factory/lessons-factory');
   }
 
   public updateById(pavId: number, pavModel: string, onSuccess?: any, onError?: any): Observable<boolean> {

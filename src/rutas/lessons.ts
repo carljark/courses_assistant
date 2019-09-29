@@ -1,7 +1,7 @@
 // var express = require('express');
 import { Request, Response, Router } from 'express';
-import InterfazEjercicios from '../modelos/ejercicios';
-import InterfazSnapshots from '../modelos/lessons';
+import InterfazEjercicios from '../modelos/exercises-model';
+import InterfazSnapshots from '../modelos/lessons-model';
 
 class RouterSnapshots {
     public router: Router;

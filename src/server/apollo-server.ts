@@ -2,7 +2,7 @@ import { ApolloServer,  Config, gql } from 'apollo-server-express';
 
 import Lesson from '../lesson.class';
 
-import {IexercisesInstance, IlessonsInstance} from '../models/db';
+import {IexercisesInstance, IlessonsInstance} from '../models-factory/db';
 
 import db from '../modelos/db';
 const LessonsTable = db.import('../models/lessons');

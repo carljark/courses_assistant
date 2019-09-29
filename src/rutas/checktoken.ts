@@ -48,7 +48,7 @@ class PostRouter {
               res.locals.decoded = decoded;
               next();
             }
-          }
+          },
         );
       } else {
         console.log('no hay token en authorization en el middleware');

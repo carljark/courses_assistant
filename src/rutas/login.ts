@@ -3,10 +3,10 @@ import { Request, Response, Router } from 'express';
 import * as fs from 'fs';
 import jwt, { SignOptions } from 'jsonwebtoken';
 import IdCursoNombre from '../clase.idcursonombre';
-import Cursos from '../modelos/cursos';
-import InterfazInscrip from '../modelos/inscripciones';
-import users from '../modelos/usuarios';
-import { IcursosInstance } from '../models/db';
+import coursesModel from '../modelos/courses-model';
+import InterfazInscrip from '../modelos/inscript-model';
+import users from '../modelos/users-model';
+import { IcursosInstance } from '../models-factory/db';
 
 class RouterLogin {
   public router: Router;
@@ -31,7 +31,7 @@ class RouterLogin {
                 let idcurso: string;
                 const tam = usucursos.length;
                 const idscursosnombres: IdCursoNombre[] = new Array(tam);
-                Cursos.conseguirTodas()
+                coursesModel.conseguirTodas()
                   .subscribe((cursos) => {
                     cursosbd = cursos;
                     usucursos.forEach((elto, indice, matriz) => {

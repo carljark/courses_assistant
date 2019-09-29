@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response, Router} from 'express';
-import modeloejercicios from '../modelos/ejercicios';
-import modeloportadas from '../modelos/lessons';
+import modeloejercicios from '../modelos/exercises-model';
+import modeloportadas from '../modelos/lessons-model';
 class RouterMeter {
     public router: Router;
     constructor(){

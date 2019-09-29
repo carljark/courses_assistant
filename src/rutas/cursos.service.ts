@@ -1,3 +1,2 @@
-import Cursos from '../modelos/cursos';
+import Cursos from '../modelos/courses-model';
                 Cursos.conseguirTodas()
-

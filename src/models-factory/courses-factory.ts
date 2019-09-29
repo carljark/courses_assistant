@@ -5,7 +5,7 @@ import {
   IcursosInstance,
 } from './db';
 
-module.exports = function(sequelize: seqlz.Sequelize, DataTypes: DatTypes) {
+export default (sequelize: seqlz.Sequelize, DataTypes: DatTypes) => {
   return sequelize.define<IcursosInstance, IcoursesAttribute>('cursos',
   {
     id: {

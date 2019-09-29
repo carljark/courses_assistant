@@ -47,8 +47,6 @@ class BackupDb {
           }
         });
       }
-
-
     }
 
     private routes() {

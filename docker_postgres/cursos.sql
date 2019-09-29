@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 11.5
--- Dumped by pg_dump version 11.5
+-- Dumped from database version 11.5 (Debian 11.5-1.pgdg90+1)
+-- Dumped by pg_dump version 11.5 (Debian 11.5-1.pgdg90+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -234,6 +234,7 @@ Catalejo_bloqueado	catalejo_bloqueado.jpg	\N	f	776	3	\N
 Formato_condicional	formato_condicional.jpg	\N	f	773	1	formato_condicional.txt
 Exam105	exam105.jpg	\N	\N	802	1	\N
 Thinking_particles1	thinking_particles.jpg	\N	f	774	3	\N
+Carlos_godoy	carlos_godoy.jpg	\N	\N	811	3	\N
 \.
 
 
@@ -275,7 +276,7 @@ SELECT pg_catalog.setval('public.inscripciones_id_seq', 15, true);
 -- Name: snapshots_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mastergodoy
 --
 
-SELECT pg_catalog.setval('public.snapshots_id_seq', 810, true);
+SELECT pg_catalog.setval('public.snapshots_id_seq', 811, true);
 
 
 --

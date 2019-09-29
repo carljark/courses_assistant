@@ -1,6 +1,6 @@
 export const mode = process.env.NODE_ENV;
 
-interface IDatabaseConfig {
+export interface IDatabaseConfig {
     database: string;
     driver: string;
     host: string;
@@ -42,7 +42,7 @@ const configurations: IConfigModes = {
         databaseConfig: {
             database: 'cursosdev',
             driver: 'postgres',
-            host: 'db',
+            host: '172.28.1.2',
             password: '1aB|pori',
             user: 'mastergodoy',
         },
@@ -56,7 +56,7 @@ const configurations: IConfigModes = {
         databaseConfig: {
             database: 'cursos',
             driver: 'postgres',
-            host: 'db',
+            host: '172.28.1.2',
             password: '1aB|pori',
             user: 'mastergodoy',
         },

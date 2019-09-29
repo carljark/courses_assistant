@@ -5,7 +5,7 @@ import {
   IexercisesInstance,
 } from './db';
 
-module.exports = function(sequelize: sqlz.Sequelize, DataTypes: DatTyps) {
+export default (sequelize: sqlz.Sequelize, DataTypes: DatTyps) => {
   return sequelize.define<IexercisesInstance, IexercisesAttribute>('ejercicios', {
     archivo: {
       allowNull: false,

@@ -1,5 +1,5 @@
 import { Request, Response, Router } from 'express';
-import modeloportada from '../modelos/lessons';
+import modeloportada from '../modelos/lessons-model';
 
 class Ruta {
     public router: Router;

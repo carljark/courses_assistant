@@ -1,5 +1,5 @@
 import { Router, Request, Response } from 'express';
-import modelUsers from '../modelos/usuarios';
+import modelUsers from '../modelos/users-model';
 class RouterUser {
     router: Router;
     constructor(){

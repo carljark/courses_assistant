@@ -5,7 +5,7 @@ import {
   IlessonsInstance,
 } from './db';
 
-module.exports = function(sequelize: sqlz.Sequelize, DataTypes: DatTyps) {
+export default (sequelize: sqlz.Sequelize, DataTypes: DatTyps) => {
   return sequelize.define<IlessonsInstance, IlessonsAttribute>('lessons', {
     archivo: {
       allowNull: true,

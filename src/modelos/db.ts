@@ -1,22 +1,16 @@
 import Sequelize from 'sequelize';
-import config, {mode} from '../environment';
-import { Iconfigdb } from './configdb.class';
-import { dev, production } from './database.json';
+import config, {IDatabaseConfig} from '../environment';
 
 // tengo repetidos los datos de la configuración de la base de datos
 // en environment y en database.json, corregir
 
 export class DefineDb {
     public static authenticated = false;
-    public cf: Iconfigdb;
+    public cf: IDatabaseConfig;
     public sequelize: Sequelize.Sequelize;
 
     constructor() {
-        if (mode === 'development') {
-            this.cf = dev;
-        } else {
-            this.cf = production;
-        }
+        this.cf = config.databaseConfig;
 
         // const dburl = process.env.DATABASE_URL;
         // this.sequelize = new Sequelize(process.env.DATABASE_URL);

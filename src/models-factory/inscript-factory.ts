@@ -5,7 +5,7 @@ import {
   InscriptionsInstance,
 } from './db';
 
-module.exports = function(sequelize: sqlz.Sequelize, DataTypes: DatTyps) {
+export default (sequelize: sqlz.Sequelize, DataTypes: DatTyps) => {
   return sequelize.define<InscriptionsInstance, InscriptionsAttribute>('inscripciones', {
     caducidad: {
       allowNull: false,

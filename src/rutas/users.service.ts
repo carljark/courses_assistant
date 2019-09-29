@@ -1,5 +1,5 @@
-import users from '../modelos/usuarios';
-import modelUsers from '../modelos/usuarios';
+import users from '../modelos/users-model';
+import modelUsers from '../modelos/users-model';
 
 export default class UsersService {
   constructor() {

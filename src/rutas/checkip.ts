@@ -1,9 +1,6 @@
 import { exec } from 'child_process';
 import { NextFunction, Request, Response, Router } from 'express';
 import { platform } from 'os';
-
-// import {} from 'ua-parser';
-
 import config from '../environment';
 
 const urlServer = config.urlServer;

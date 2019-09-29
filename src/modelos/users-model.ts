@@ -3,8 +3,8 @@ import {catchError} from 'rxjs/operators';
 import {
   IUsersInstance,
   IUsersModel,
-} from '../models/db';
-import db, {DefineDb} from './db';
+} from '../models-factory/db';
+import db from './db';
 
 class InterfazUsuarios {
   public static init(): InterfazUsuarios {
@@ -13,7 +13,7 @@ class InterfazUsuarios {
   public Users: IUsersModel;
   private emptyUser: IUsersInstance = {id: -1, nombre: '', password: ''} as IUsersInstance;
   constructor() {
-    this.Users = db.import('../models/usuarios');
+    this.Users = db.import('../models-factory/users-factory');
   }
   public updateById(id: number, nombre: string, onSuccess?: any, onError?: any) {
     this.Users.update({ nombre }, { where: {id} }).

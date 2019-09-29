@@ -1,5 +1,5 @@
-import InterfazInscrip from '../modelos/inscripciones';
-import {IusersAttribute as User} from '../models/db';
+import InterfazInscrip from '../modelos/inscript-model';
+import {IusersAttribute as User} from '../models-factory/db';
 
 export class InscriptService {
     public getInscript(user: User) {

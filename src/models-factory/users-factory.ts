@@ -5,29 +5,6 @@ import {
   IUsersInstance,
 } from './db';
 
-/* module.exports = function(sequelize: sqlz.Sequelize, DataTypes: DatTyps) {
-  return sequelize.define<IUsersInstance, IusersAttribute>('usuarios', {
-    id: {
-      allowNull: false,
-      autoIncrement: true,
-      field: 'id',
-      primaryKey: true,
-      type: DataTypes.INTEGER,
-    },
-    nombre: {
-      allowNull: true,
-      field: 'nombre',
-      type: DataTypes.STRING,
-    },
-    password: {
-      allowNull: true,
-      field: 'password',
-      type: DataTypes.STRING,
-    },
-  }, {
-    tableName: 'usuarios',
-  });
-}; */
 export default (sequelize: sqlz.Sequelize, DataTypes: DatTyps) => {
   return sequelize.define<IUsersInstance, IusersAttribute>('usuarios', {
     id: {
@@ -51,4 +28,3 @@ export default (sequelize: sqlz.Sequelize, DataTypes: DatTyps) => {
     tableName: 'usuarios',
   });
 };
-// export default fn;

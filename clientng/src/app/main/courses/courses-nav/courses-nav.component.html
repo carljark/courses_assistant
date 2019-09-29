@@ -3,7 +3,6 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="!(isHandset$ | async)">
-    <mat-toolbar>Cursos</mat-toolbar>
     <mat-nav-list>
       <a *ngFor="let curso of cursos" mat-list-item (click)="eligeCurso(curso)" >{{curso.nombrecurso}}</a>
     </mat-nav-list>

@@ -3,10 +3,10 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CursosService } from '../../shared/services/cursos.service';
-import {LessonsService} from '../../shared/services/lessons.service';
+import {LessonsService} from '../../shared/services/lessonsgraph.service';
 import { LoginService } from '../../shared/services/login.service';
 import IdCursoNombre from '../../shared/interfaces/clase.idcursonombre';
-import { ImagenesService } from '../../shared/services/imagenes.service';
+import { ImagenesService } from '../../shared/services/lessons.service';
 import {Lesson} from '../../shared/interfaces/lesson.class';
 import {BackupService} from '../../shared/services/backup.service';
 

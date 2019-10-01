@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LessonService } from '../../services/lesson.service';
-import {LessonsService} from '../../../shared/services/lessons.service';
+import {LessonsService} from '../../../shared/services/lessonsgraph.service';
 import { Observable, Subscription } from 'rxjs';
 import { Lesson } from '../../../shared/interfaces/lesson.class';
 

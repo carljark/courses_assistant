@@ -10,7 +10,7 @@ import responsiveMedia from '../../shared/services/responsive.service';
     styleUrls: ['./app-nav.component.scss']
 })
 export class NavComponent implements OnInit, OnDestroy{
-    navLinks: HTMLElement;
+    public navLinks: HTMLElement;
     public menuresponsive = false;
     public topnavopen = false;
     logueado = true;
@@ -19,7 +19,16 @@ export class NavComponent implements OnInit, OnDestroy{
     loggedSubs: Subscription;
     responsiveMedSubs: Subscription;
     subscriptAdmin: Subscription;
-
+    private coursesLink: HTMLLinkElement;
+    private loginLink: HTMLLinkElement;
+    private showOnlyLink() {
+      const allLinks = this.navLinks.childNodes;
+      allLinks.forEach((link: HTMLLinkElement) => {
+        if (link.id !== 'coursesLink') {
+          link.style.display = 'none';
+        }
+      })
+    }
     constructor(
       private router: Router,
       private loginsrc: LoginService,
@@ -28,8 +37,8 @@ export class NavComponent implements OnInit, OnDestroy{
       this.admin = loginsrc.admin;
       this.loggedSubs = loginsrc.logueadochange.subscribe((value) => {
           this.logueado = value;
-          const aLinkCourses = document.getElementById('linkCourses') as HTMLLinkElement;
-          this.putLinkFirst(aLinkCourses);
+          // this.coursesLink = document.getElementById('coursesLink') as HTMLLinkElement;
+          this.putLinkFirst(this.coursesLink);
       });
       this.subscript = loginsrc.adminchange.subscribe((value) => {
           this.admin = value;
@@ -37,14 +46,17 @@ export class NavComponent implements OnInit, OnDestroy{
     }
     public ngOnInit() {
       this.navLinks = document.getElementById('navlinks');
+      this.coursesLink = document.getElementById('coursesLink') as HTMLLinkElement;
+      this.loginLink = document.getElementById('loginLink') as HTMLLinkElement;
       this.responsiveMedSubs = responsiveMedia
       .subscribe((medStr) => {
-        console.log(medStr);
         if (medStr.type === 'max' && medStr.pixels >= 768) {
           this.menuresponsive = false;
+          console.log('responsive false');
         }
         else if (medStr.type === 'min' && medStr.pixels >= 569) {
           this.menuresponsive = false;
+          console.log('responsive false');
         } else {
           console.log('responsive true');
           this.menuresponsive = true;
@@ -58,12 +70,11 @@ export class NavComponent implements OnInit, OnDestroy{
         this.openCloseMenu();
         // muevo el elto al principio de la lista
         const aLinkSelected = click.srcElement as HTMLLinkElement;
-        this.putLinkFirst(aLinkSelected);
+        // this.putLinkFirst(aLinkSelected);
       });
     }
     public putLinkFirst(elto: HTMLLinkElement) {
-        this.navLinks.removeChild(elto);
-        this.navLinks.insertBefore(elto, this.navLinks.firstChild);
+      this.navLinks.insertBefore(elto, this.navLinks.firstChild);
     }
     public ngOnDestroy() {
       this.responsiveMedSubs.unsubscribe();
@@ -78,5 +89,6 @@ export class NavComponent implements OnInit, OnDestroy{
     public logout() {
       this.loginsrc.logout();
       this.router.navigate(['/login']);
+      this.putLinkFirst(this.loginLink);
     }
 }

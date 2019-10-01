@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ImagenesService } from '../../shared/services/imagenes.service';
+import { ImagenesService } from '../../shared/services/lessons.service';
 import { LoginService } from '../../shared/services/login.service';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';

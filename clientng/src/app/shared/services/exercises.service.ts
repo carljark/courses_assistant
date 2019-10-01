@@ -5,7 +5,7 @@ import { environment } from '../../../environments/environment';
 import { LoginService } from './login.service';
 import { HttpClient } from '@angular/common/http';
 
-import { LessonsService } from './lessons.service';
+import { LessonsService } from './lessonsgraph.service';
 import { Lesson } from '../interfaces/lesson.class';
 import { switchMap } from 'rxjs/operators';
 

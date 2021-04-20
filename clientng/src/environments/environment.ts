@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  urlServer: 'http://192.168.1.3:8442'
+  urlServer: 'http://192.168.1.3:8442',
+  routeServer: 'http://192.168.1.3:8442',
 };

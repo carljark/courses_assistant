@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "prestart": "npm i",
+    "copytodist": "node copytodist.js",
+    "prestart": "npm i && npm run copytodist",
     "start": "cross-env NODE_ENV=production node dist",
     "startlocaldev": "cross-env NODE_ENV=development nodemon dist",
     "startdockerdev": "cross-env NODE_ENV=dockerdev nodemon dist",

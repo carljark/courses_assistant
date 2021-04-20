@@ -1,4 +1,6 @@
 export const environment = {
   production: true,
-  urlServer: ''
+  // urlServer: '/app_courses',
+  urlServer: '',
+  routeServer: '',
 };
